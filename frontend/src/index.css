@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+/* On définit les variables que votre App.css utilise */
+:root {
+  --accent: #3b82f6;
+  --accent-bg: #eff6ff;
+  --accent-border: #2563eb;
+  --border: #e5e7eb;
+  --text-h: #111827;
+  --social-bg: #f3f4f6;
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+/* En v4, on enregistre les variables pour Tailwind ici */
+@theme {
+  --color-accent: var(--accent);
+  --color-accent-bg: var(--accent-bg);
+}
