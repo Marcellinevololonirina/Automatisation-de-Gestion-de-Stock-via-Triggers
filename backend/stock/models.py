@@ -38,4 +38,5 @@ class CustomUser(AbstractUser):
         ('ADMIN', 'AdminAudit'),
     )
     role = models.CharField(max_length=10, choices=ROLE_CHOICES, default='USER')
+    photo = models.ImageField(upload_to='profiles/', null=True, blank=True)
     

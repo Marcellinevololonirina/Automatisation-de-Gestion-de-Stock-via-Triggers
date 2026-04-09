@@ -4,6 +4,8 @@ from django.contrib.auth import get_user_model
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from .permissions import IsAdminAudit, IsUser
+from rest_framework.views import APIView
+from rest_framework.response import Response
 
 # Create your views here.
 from rest_framework import viewsets, generics
@@ -57,3 +59,39 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
 
 class CustomTokenObtainPairView(TokenObtainPairView):
     serializer_class = CustomTokenObtainPairSerializer
+
+
+class ChangePasswordView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def put(self, request):
+        user = request.user
+        new_password = request.data.get("password")
+
+        user.set_password(new_password)
+        user.save()
+
+        return Response({"message": "Mot de passe modifié"})
+
+class ProfileView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        user = request.user
+        return Response({
+            "username": user.username,
+            "email": user.email,
+            "role": user.role,
+            "photo": user.url if user.photo else None
+        })
+
+    def put(self, request):
+        user = request.user
+        user.username = request.data.get("username", user.username)
+        user.email = request.data.get("email", user.email)
+        if request.FILES.get("photo"):
+            user.photo = request.FILES.get("photo")
+
+        user.save()
+
+        return Response({"message": "Profil mis à jour"})

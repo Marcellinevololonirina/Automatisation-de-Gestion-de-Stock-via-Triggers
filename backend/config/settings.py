@@ -83,6 +83,9 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5173",
 ]
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 # Optionnel : permettre l'envoi de credentials (si besoin plus tard)
 CORS_ALLOW_CREDENTIALS = True
 
