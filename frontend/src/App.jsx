@@ -12,7 +12,6 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login setUser={setUser} />} />
         <Route path="/register" element={<Register />} />
-
         <Route
           path="/dashboard/*"
           element={user ? <Dashboard user={user} /> : <Navigate to="/login" />}

@@ -24,7 +24,7 @@ export default function Dashboard({ user }) {
         <ul className="space-y-4">
           {user.role === 'USER' && (
             <>
-              <li><Link to="/dashboard/profil">📦 Profil</Link></li>
+              <li><Link to="/dashboard/profil"> Profil</Link></li>
               <li><Link to="/dashboard/produits">📦 Produits</Link></li>
               <li><Link to="/dashboard/fournisseurs">🚚 Fournisseurs</Link></li>
               <li><Link to="/dashboard/flux">🔄 Approvisionnements</Link></li>
