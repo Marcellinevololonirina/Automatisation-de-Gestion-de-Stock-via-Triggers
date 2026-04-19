@@ -21,7 +21,7 @@ export default function FournisseurManager() {
         fetchData();
     };
 
-    const remove = async (id) => {
+    const remove = async (id) => { 
         await api.delete(`fournisseurs/${id}/`);
         fetchData();
     };

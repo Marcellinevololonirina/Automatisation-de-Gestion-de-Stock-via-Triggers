@@ -26,9 +26,15 @@ export default function ProduitManager() {
         fetchData();
     };
 
-    const editProduit = async (id) => {
-        await api.update(`produits/${id}/`);
-        fetchData();
+    const editProduit = async (id, currentStock) => {
+        const newStock = prompt("Nouvelle quantité:", currentStock);
+
+        if (newStock != null) {
+            await api.patch(`produits/${id}/`, {
+                stock: parseInt(newStock)
+            });
+            fetchData();
+        }
     };
 
 
@@ -61,8 +67,8 @@ export default function ProduitManager() {
                         <tr className="border-b hover:bg-gray-50">
                             <td className="p-3">{p.numero}</td>
                             <td className="p-3">{p.design}</td>
-                            <td className="p-3">(Stock: {p.stock})</td>
-                            <td className="p-3"> <button onClick={() => editProduit(p.numero)} className="text-blue-500">
+                            <td className="p-3"> {p.stock}</td>
+                            <td className="p-3"> <button onClick={() => editProduit(p.numero, p.stock)} className="text-blue-500">
                                 Modifier
                             </button></td>
                             <td className="p-3">
