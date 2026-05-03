@@ -53,7 +53,7 @@ export default function FournisseurManager() {
                         <tr className="border-b hover:bg-gray-50">
                             <td className="p-3">{f.numero}</td>
                             <td className="p-3">{f.nom}</td>
-                            <td className="p-3"> <button onClick={() => edit(p.numero)} className="text-blue-500">
+                            <td className="p-3"> <button onClick={() => edit(f.numero)} className="text-blue-500">
                                 Modifier
                             </button></td>
                             <td className="p-3">

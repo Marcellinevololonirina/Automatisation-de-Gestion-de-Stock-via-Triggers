@@ -1,4 +1,11 @@
 import { Routes, Route, Link, useNavigate } from 'react-router-dom';
+import {
+  User,
+  Package,
+  Truck,
+  ShoppingCart,
+  LogOut
+} from "lucide-react";
 
 import AuditView from '../components/AuditView.jsx';
 import ProduitManager from '../components/Produit.jsx';
@@ -24,21 +31,21 @@ export default function Dashboard({ user }) {
         <ul className="space-y-4">
           {user.role === 'USER' && (
             <>
-              <li><Link to="/dashboard/profil"> Profil</Link></li>
-              <li><Link to="/dashboard/produits">📦 Produits</Link></li>
-              <li><Link to="/dashboard/fournisseurs">🚚 Fournisseurs</Link></li>
-              <li><Link to="/dashboard/flux">🔄 Approvisionnements</Link></li>
+              <li><Link to="/dashboard/profil"><User size={20} /> Profil</Link></li>
+              <li><Link to="/dashboard/produits"><Package size={20} /> Produits</Link></li>
+              <li><Link to="/dashboard/fournisseurs"><Truck size={20} /> Fournisseurs</Link></li>
+              <li><Link to="/dashboard/flux"><ShoppingCart size={20} /> Approvisionnements</Link></li>
             </>
           )}
           {user.role === 'ADMIN' && (
             <>
-              <li><Link to="/dashboard/profil">📦 Profil</Link></li>
+              <li><Link to="/dashboard/profil"> Profil</Link></li>
               <li><Link to="/dashboard/audit" className="hover:text-indigo-300">🛡️ Audit Système</Link></li>
             </>
 
           )}
         </ul>
-        <button onClick={handleLogout} className="mt-auto pt-10 text-red-400 font-bold italic">Déconnexion</button>
+        <button onClick={handleLogout} className="mt-auto pt-10 text-red-400 font-bold italic"><LogOut size={20} /> Déconnexion</button>
       </nav>
 
       {/* Main Content */}

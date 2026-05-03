@@ -5,6 +5,9 @@ export default function ProduitManager() {
     const [produits, setProduits] = useState([]);
     const [design, setDesign] = useState("");
 
+    const [editRow, setEditRow] = useState(null);
+    const [loading, setLoading] = useState(false);
+
     const fetchData = async () => {
         const res = await api.get("produits/");
         setProduits(res.data);
@@ -16,12 +19,17 @@ export default function ProduitManager() {
 
     const addProduit = async (e) => {
         e.preventDefault();
+        if (!design.trim()) return;
+        setLoading(true);
+
         await api.post("produits/", { design, stock: 0 });
         setDesign("");
-        fetchData();
+        await fetchData();
+        setLoading(false);
     };
 
     const deleteProduit = async (id) => {
+        if (!window.confirm('Voulez-vous supprimer ce produit ')) return;
         await api.delete(`produits/${id}/`);
         fetchData();
     };

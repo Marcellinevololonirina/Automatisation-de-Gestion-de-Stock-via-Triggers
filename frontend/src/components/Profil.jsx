@@ -43,7 +43,7 @@ export default function Profil() {
                 formData.append("photo", file);
             }
 
-            await api.put("profile/", FormData, {
+            await api.put("profile/", formData, {
                 headers: {
                     "Content-Type": "multipart/form-data"
                 }
@@ -78,7 +78,7 @@ export default function Profil() {
 
     return (
         <div className="shadow-md rounded-lg p-6 max-w-xl">
-            <h2 className="text-xl font-bold mb-4 text-indigo-700"> 👤 Profil</h2>
+
 
             <div className="flex flex-col items-center mb-6">
                 <img
@@ -106,7 +106,7 @@ export default function Profil() {
                     type="text"
                     value={user.username}
                     onChange={(e) => setUser({ ...user, username: e.target.value })}
-                    className="w-full p-2 border rounded"
+                    className="w-full p-2"
                     placeholder="Username"
                 />
 
@@ -114,7 +114,7 @@ export default function Profil() {
                     type="email"
                     value={user.email}
                     onChange={(e) => setUser({ ...user, email: e.target.value })}
-                    className="w-full p-2 border rounded"
+                    className="w-full p-2 "
                     placeholder="Email"
                 />
 

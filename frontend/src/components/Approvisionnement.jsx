@@ -84,6 +84,7 @@ export default function ApprovisionnementManager() {
             <tr className="border-b hover:bg-gray-50">
               <td className="p-3">{a.id}</td>
               <td className="p-3">{a.produit}</td>
+              <td className="p-3">{a.fournisseur}</td>
               <td className="p-3">{a.qteentree}</td>
               <td className="p-3"> <button onClick={() => edit(a.id)} className="text-blue-500">
                 Modifier
